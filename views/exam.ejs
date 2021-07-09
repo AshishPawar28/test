@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html>
+<head>	
+<title>YelpCamp</title>
+<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
+<link rel="stylesheet" type="text/css" href="/stylesheets/main.css">
+</head>
+<body>
+
+<h1>This is exam page.</h1>
+
+<% for(var i=0;i<(test.subject.length);i++){ %>
+
+		<a href="/exam/<%= test._id %>/<%= test.subject[i]._id %>/0"><%= test.subject[i].name %></a>
+
+<% 	}  %>
+
+<h1><%= subject.name %></h1>
+
+<p><%= subject.questions[queno].que %></p>
+
+<form action="/exam/<%= test._id %>/<%= subject._id %>/<%= subject.questions[queno]._id %>/<%= queno %>" method="post">
+
+	
+	
+		
+
+			<% for(var i=0;i<(subject.questions[queno].options.length);i++){ %>
+			<% if(status==(i+1)){ %>
+			 		<input type="radio" name="userChoice" value="<%= i+1 %>" checked><label><%= subject.questions[queno].options[i] %></label><br>
+			 		<% continue %>;
+			<%	} %>
+				
+					<input type="radio" name="userChoice" value="<%= i+1 %>"><label><%= subject.questions[queno].options[i] %></label><br>
+
+		 		<% } %>
+
+		
+
+		
+
+
+	
+			
+
+	
+	
+ 
+<button>Save and Next</button>
+
+</form>
+
+<% if(Number(queno)==Number(subject.questions.length-1)&&String(test.subject[test.subject.length-1]._id)==String(subject._id)){ %>
+
+	<form action="/result/<%= test._id %>/<%= subject._id %>/0">
+		
+		<button>Finish Test</button>
+
+	</form>
+		
+
+
+<%  }  %>
+
+
+<% for(var i=0;i<(subject.questions.length);i++){ %>
+
+		<form action="/exam/<%= test._id %>/<%= subject._id %>/<%= i %>">
+				
+			<button><%= i+1 %></button>
+
+		</form>
+
+<% } %>
+
+<script src="https://code.jquery.com/jquery-3.4.1.slim.min.js" integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n" crossorigin="anonymous"></script>
+<script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js" integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js" integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6" crossorigin="anonymous"></script>
+</body>
+
+</html>
